@@ -4,7 +4,7 @@ let personalMovieDB = {
 	count : 0,
 	movies : {},
 	actors : {},
-	genres : [],
+	genres : ['','',''],
 	privat : false,
 	start : function(){
 		let numberOfFilms;
@@ -52,14 +52,13 @@ let personalMovieDB = {
 		}
 	},
 	writeYourGenres : function(){
-		let geners = [];
 		for (let index = 1; index < 4; index++) {
-			geners[index - 1] = prompt(`Ваш любимый жанр под номером ${index}`, 1.0);
-			while( geners[index - 1] == '' || geners[index - 1] == null || isNaN(geners[index - 1]) ) {
-				geners[index - 1] = prompt(`Ваш любимый жанр под номером ${index}`, 1.0);
+			this.genres[index - 1] = prompt(`Ваш любимый жанр под номером ${index}`, '');
+			while( this.genres[index - 1] == '' || this.genres[index - 1] == null ) {
+				this.genres[index - 1] = prompt(`Ваш любимый жанр под номером ${index}`, '');
 			}
 		} 
-		geners.forEach( function(element, indexx){
+		this.genres.forEach( (element, indexx) => {
 			console.log(`Любимый жанр ${indexx + 1} - это ${element}!`);
 		}
 		);
@@ -78,8 +77,5 @@ let personalMovieDB = {
   personalMovieDB.detectPersonalLevel();
   personalMovieDB.showMyDB();
   personalMovieDB.writeYourGenres();
-
-  personalMovieDB.toggleVisibleMyDB();
-  personalMovieDB.showMyDB();
 
 
